@@ -62,6 +62,8 @@ RUN export HOME=/home/jenkins && \
     helm plugin install https://github.com/databus23/helm-diff --version $HELM_PLGN_DIFF_VERSION --debug && \
     helm plugin install https://github.com/chartmuseum/helm-push --version $HELM_PLGN_PUSH_VERSION --debug && \
     helm plugin install https://github.com/futuresimple/helm-secrets --version $HELM_PLGN_SECRET_VERSION --debug
+    
+RUN mkdir -p /home/jenkins/.ssh && echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null" >> /home/jenkins/.ssh/config
 
 # Add configs for ct
 COPY ["./etc/ct/chart_schema.yaml", "./etc/ct/lintconf.yaml", "/etc/ct/"]
