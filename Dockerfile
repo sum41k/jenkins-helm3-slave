@@ -4,7 +4,7 @@ USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 ENV AWS_CLI_VERSION=1.16.272 \
-    CT_VERSION=3.0.0-beta.2 \
+    CT_VERSION=3.0.0-rc.1 \
     HADOLINT_VERSION=v1.17.5 \
     HELMFILE_VERSION=v0.100.1 \
     HELM_VERSION=v3.1.1 \
@@ -66,4 +66,4 @@ RUN export HOME=/home/jenkins && \
 RUN mkdir -p /home/jenkins/.ssh && echo -e "Host *\n\tStrictHostKeyChecking no\n\tUserKnownHostsFile /dev/null" >> /home/jenkins/.ssh/config
 
 # Add configs for ct
-COPY ["./etc/ct/chart_schema.yaml", "./etc/ct/lintconf.yaml", "/etc/ct/"]
+COPY ["./etc/chart_schema.yaml", "./etc/lintconf.yaml", "/etc/ct/"]
